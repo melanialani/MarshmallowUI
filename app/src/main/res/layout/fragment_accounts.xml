@@ -1,0 +1,129 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.melanialani.marshmallowui.Fragments.Accounts"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:id="@+id/accounts_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        style="@android:style/Widget.Material.Light.Button.Borderless.Colored">
+
+        <ImageView
+            android:id="@+id/iv_profilePictureFb"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/iv_profilePicture_contentDescription"
+            android:src="@drawable/ic_businessman"/>
+
+        <TextView
+            android:id="@+id/tv_usernameFb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:text="Erwin Smith"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/accounts_twitter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        style="@android:style/Widget.Material.Light.Button.Borderless.Colored">
+
+        <ImageView
+            android:id="@+id/iv_profilePictureTwitter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/iv_profilePicture_contentDescription"
+            android:src="@drawable/ic_chef"/>
+
+        <TextView
+            android:id="@+id/tv_usernameTwitter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:text="Commander Handsome"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/accounts_gplus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        style="@android:style/Widget.Material.Light.Button.Borderless.Colored">
+
+        <ImageView
+            android:id="@+id/iv_profilePictureGPlus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/iv_profilePicture_contentDescription"
+            android:src="@drawable/ic_courier"/>
+
+        <TextView
+            android:id="@+id/tv_usernameGPlus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:text="erwonmyheart"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/accounts_insta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        style="@android:style/Widget.Material.Light.Button.Borderless.Colored">
+
+        <ImageView
+            android:id="@+id/iv_profilePictureInsta"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/iv_profilePicture_contentDescription"
+            android:src="@drawable/ic_chef"/>
+
+        <TextView
+            android:id="@+id/tv_usernameInsta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:text="Levi Ackerman"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/accounts_tumblr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        style="@android:style/Widget.Material.Light.Button.Borderless.Colored">
+
+        <ImageView
+            android:id="@+id/iv_profilePictureTumblr"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/iv_profilePicture_contentDescription"
+            android:src="@drawable/ic_taxi_driver"/>
+
+        <TextView
+            android:id="@+id/tv_usernameTumblr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:text="Pouty Captain"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.melanialani.marshmallowui;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -17,8 +18,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.melanialani.marshmallowui.Fragments.Accounts;
+import com.melanialani.marshmallowui.Fragments.AddAccount;
+import com.melanialani.marshmallowui.Fragments.AllPost;
 import com.melanialani.marshmallowui.Fragments.Fragment1;
 import com.melanialani.marshmallowui.Fragments.Fragment2;
+import com.melanialani.marshmallowui.Fragments.RemoveAccount;
+import com.melanialani.marshmallowui.Fragments.SinglePost;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,37 +36,6 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        /* Sliding menu show but no action detected
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout1);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager1);
-
-        tabLayout.addTab(tabLayout.newTab().setText("Fragment 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Fragment 2"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        MyFragmentAdapter myFragmentAdapter = new MyFragmentAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-
-        viewPager.setAdapter(myFragmentAdapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-        */
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +54,10 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null); // make icons "actually" shows in nav drawer
     }
 
+    //region default from template
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -112,32 +89,63 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
+    //endregion
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         Fragment fragment = null;
         Class fragmentClass = null;
 
-        if (id == R.id.nav_camera) {
-            fragmentClass = Fragment1.class;
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_accounts) {
+            fragmentClass = Accounts.class;
+        } else if (id == R.id.nav_settings) {
             fragmentClass = Fragment2.class;
-        } else if (id == R.id.nav_slideshow) {
+        }
 
-        } else if (id == R.id.nav_manage) {
+        // account management
+        else if (id == R.id.nav_addAccount) {
+            fragmentClass = AddAccount.class;
+        } else if (id == R.id.nav_removeAccount) {
+            fragmentClass = RemoveAccount.class;
+        }
 
-        } else if (id == R.id.nav_share) {
+        // statistical overview
+        else if (id == R.id.nav_view) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_viewOverall) {
 
         }
 
+        // graphical overview
+        else if (id == R.id.nav_trend) {
+
+        } else if (id == R.id.nav_trendOverall) {
+
+        }
+
+        // post
+        else if (id == R.id.nav_post) {
+            fragmentClass = SinglePost.class;
+        } else if (id == R.id.nav_postToAll) {
+            fragmentClass = AllPost.class;
+        }
+
+        // hashtag management
+        else if (id == R.id.nav_createHashtagList) {
+
+        } else if (id == R.id.nav_manageHashtagList) {
+
+        } else if (id == R.id.nav_searchByHashtag) {
+
+        }
+
+        // load target class into fragment
         try {
-            fragment = (Fragment) fragmentClass.newInstance();
+            fragment = (Fragment) (fragmentClass != null ? fragmentClass.newInstance() : null);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -146,6 +154,7 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
+        // call navigation menu into attention
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         // highlight selected item that has been done by NavigationView
@@ -154,7 +163,11 @@ public class MainActivity extends AppCompatActivity
         // set action bar title
         setTitle(item.getTitle());
 
+        // hide navigation menu
         drawer.closeDrawer(GravityCompat.START);
+
+        // done with this shit
         return true;
     }
+
 }
